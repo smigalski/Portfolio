@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            margin: 0 auto;
+            max-width: 1000px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        main {
+            flex: 1;
+        }
+        section {
+            margin: 20px auto;
+            max-width: 1000px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            flex: 1 1 calc(33.333% - 40px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mein Portfolio</h1>
+        <nav>
+            <a href="#about" onclick="scrollToSection('about')">Über mich</a>
+            <a href="#projects" onclick="scrollToSection('projects')">Meine Projekte</a>
+            <a href="#skills" onclick="scrollToSection('skills')">Fähigkeiten</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>Über mich</h2>
+            <p>Hier kannst du etwas über dich erzählen. Beschreibe deinen beruflichen Hintergrund, deine Interessen und Ziele. Dies ist der perfekte Ort, um dich deinen Besuchern vorzustellen.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Meine Projekte</h2>
+            <div class="container">
+                <div class="card">
+                    <h3>Projekt 1</h3>
+                    <p>Beschreibe dein erstes Projekt. Was war die Herausforderung und wie hast du sie gelöst?</p>
+                </div>
+                <div class="card">
+                    <h3>Projekt 2</h3>
+                    <p>Beschreibe dein zweites Projekt. Was war die Herausforderung und wie hast du sie gelöst?</p>
+                </div>
+                <div class="card">
+                    <h3>Projekt 3</h3>
+                    <p>Beschreibe dein drittes Projekt. Was war die Herausforderung und wie hast du sie gelöst?</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Fähigkeiten</h2>
+            <ul>
+                <li>Fähigkeit 1</li>
+                <li>Fähigkeit 2</li>
+                <li>Fähigkeit 3</li>
+                <li>Fähigkeit 4</li>
+                <li>Fähigkeit 5</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Dein Name. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            const target = document.getElementById(id);
+            const targetPosition = target.getBoundingClientRect().top;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition;
+            const duration = 2000; // Dauer der Animation in ms (10x länger)
+            let start = null;
+
+            window.requestAnimationFrame(function step(timestamp) {
+                if (!start) start = timestamp;
+                const progress = timestamp - start;
+                const scrollY = Math.min(progress / duration * distance + startPosition, startPosition + distance);
+                window.scrollTo(0, scrollY);
+                if (progress < duration) {
+                    window.requestAnimationFrame(step);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
